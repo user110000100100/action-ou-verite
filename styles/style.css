@@ -113,7 +113,7 @@ h1 {
 
 /* ------- CARD STYLE ------- */
 .card {
-    padding: 30px;
+    padding: 15px;
     width: 100%;
 
     background: var(--card);
@@ -165,7 +165,7 @@ label, h2 {
 textarea, input[type="text"] {
     resize: none;
     width: 100%;
-    padding: 15px 20px;
+    padding: 10px 15px;
 
     background: var(--input);
     border: 1px solid var(--border);
@@ -299,7 +299,7 @@ textarea:focus, input[type="text"]:focus {
 
     position: relative;
     width: 100%;
-    padding: 15px 20px;
+    padding: 10px 15px;
 
     background: var(--input);
     border: 1px solid var(--border);
