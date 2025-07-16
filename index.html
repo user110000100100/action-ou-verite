@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Action ou Vérité</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        
+        <div class="main-container">
+
+            <header>
+                <h1>Action ou Vérité</h1>
+                <h1 class="overlay">Action ou Vérité</h1>
+            </header>
+
+            <div class="tabs">
+                <button class="tab-btn btn active" data-tab="configuration">Configuration</button>
+                <button class="tab-btn btn" data-tab="play">Jouer</button>
+            </div>
+
+            <div class="tab-content active" id="configuration-tab">
+                <div class="card" id="addPlayer-card">
+                    <h2 class="optional active" id="players-optional">Min. 2 joueurs</h2>
+                    <div class="grid-group">
+                        <div class="input-group">
+                            <label for="newPlayerName">Ajouter un joueur</label>
+                            <input type="text" class="requiredField" id="newPlayerName" placeholder="Nom du joueur" spellcheck="false" autocomplete="off">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="newPlayerGender">Genre du joueur</label>
+                            <div class="input-with-button">
+                                <select class="select" id="newPlayerGender">
+                                    <option value="none" class="opt-style">Aucun</option>
+                                    <option value="male" class="opt-style">Homme</option>
+                                    <option value="female" class="opt-style">Femme</option>
+                                </select>
+                                <button class="add-btn btn important-btn" id="addPlayer-btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="playersList items-list" id="playersList">
+                        <h2 class="empty-array-info active" id="players-list-empty-message">Aucun joueur n'a encore été ajouté...</h2>
+                    </div>
+                </div>
+
+                <div class="card" id="addLevel-card">
+                    <h2 class="optional">Facultatif</h2>
+                    <div class="input-group">
+                        <label for="newLevel">Ajouter un niveau <span>(exemple: soft)</span></label>
+                        <div class="input-with-button">
+                            <input type="text" class="requiredField" id="newLevel" placeholder="Nom du niveau" spellcheck="false" autocomplete="off">
+                            <button class="add-btn btn important-btn" id="addLevel-btn">+</button>
+                         </div>
+                    </div>
+                    <div class="levelsList items-list" id="levelsList">
+                        <h2 class="empty-array-info active" id="levels-list-empty-message">Aucun niveau n'a encore été ajouté...</h2>
+                    </div>
+                </div>
+
+                <div class="card" id="addChallenge-card">
+                    <h2 class="optional optional-orange active">Niveau « Non défini » apparaîtra uniquement si tous les niveaux sont sélectionnés pendant une partie.</h2>
+                    <div class="input-group">
+                        <label for="newChallenge">Ajouter un défi ou une question</label>
+                        <input type="text" class="requiredField" id="newChallenge" placeholder="Écrivez quelque chose..." spellcheck="false" autocomplete="off">
+                    </div>
+
+                    <div class="grid-group">
+                        <div class="input-group">
+                            <label for="targetPlayer">Pour quel joueur ?</label>
+                            <select class="select playersSelectList" id="targetPlayer">
+                                <option value="all" class="opt-style default-option">Tous les joueurs</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="targetGender">Pour quel genre ?</label>
+                            <select class="select" id="targetGender">
+                                <option value="all" class="opt-style">Tous les genres</option>
+                                <option value="male" class="opt-style">Homme</option>
+                                <option value="female" class="opt-style">Femme</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="challengeType">Action ou Vérité ?</label>
+                            <select class="select" id="challengeType">
+                                <option value="action" class="opt-style">Action</option>
+                                <option value="verite" class="opt-style">Vérité</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="challengeLevel">Niveau</label>
+                            <select class="select levelsSelectList" id="challengeLevel">
+                                <option value="none" class="opt-style default-option">Non défini</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="add-btn btn important-btn" id="addChallenge-btn">Ajouter</button>
+                </div>
+
+                <div class="card" id="challengesList">
+                    <h2 class="empty-array-info active" id="challenges-list-empty-message">Aucun gage n'a encore été ajouté...</h2>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="play-tab">
+                <div class="card game-settings-card">
+                    <div class="input-group">
+                        <label for="challengeGameLevel">Choisissez le niveau de la partie</label>
+                        <select class="select levelsSelectList" id="challengeGameLevel">
+                            <option value="none" class="opt-style default-option">Non défini</option>
+                        </select>
+                    </div>
+                    <button class="btn important-btn" id="startGame-btn">Commencer la partie !</button>
+                </div>
+
+                <!-- <div class="card game-card">
+                    <h2>Niveau.x de la partie:</h2>
+                    <ul class="gameLevels-list">
+                        <li>Non défini</li>
+                        <li>Soft</li>
+                        <li>Difficile</li>
+                        <li>Hard</li>
+                    </ul>
+                </div> -->
+                
+                <div class="card game-card inactive" id="choice-card">
+                    <h2 class="playerName-round">Au tour de <span class="currentPlayer">Matthieu</span></h2>
+
+                    <div class="grid-group">
+                        <button disabled class="game-choice" id="action-choice">Action</button>
+                        <button class="game-choice" id="verite-choice">Vérité</button>
+                    </div>
+                </div>
+
+                <div class="card game-card inactive" id="choice-card">
+                    <h2>Action</h2>
+                    <h2 class="currentChallenge" data-id="1">Boire 1 Litre d'eau en 10 secondes</h2>
+                    <div class="grid-group game-btns">
+                        <button class="btn game-other-btn" id="leaveGame-btn">Quitter</button>
+                        <button class="btn game-other-btn important-btn" id="nextRound-btn">Tour suivant</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    <script src="scripts/tabs_handler.js"></script>
+    <script src="scripts/configuration.js"></script>
+    <script src="scripts/challenges.js"></script>
+    <script src="scripts/game.js"></script>
+</html>
